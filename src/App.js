@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from "react";
+import Card from "./Components/Card"; // Import the Card component
 import './App.css';
 
+// import { FaBeer } from 'react-icons/fa'; // Font Awesome
+// import Gradient from "./Components/Gradient";
+
+
 function App() {
+  const [showCard, setShowCard] = useState(false);
+
+  useEffect(() => {
+    // Show the card when the page loads
+    setShowCard(true);
+  }, []);
+
+  const handleClose = () => {
+    setShowCard(false);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <Gradient /> */}
+    
+      {showCard && <Card onClose={handleClose} />}
     </div>
   );
 }
